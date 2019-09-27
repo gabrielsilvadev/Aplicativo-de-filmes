@@ -14,8 +14,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'feed.html',
 })
 export class FeedPage {
-  public nome_usuario:string="gabrielkennedy";
-  public daata_dia:string="setembro 19, 2019";
+  public  objeto_feed ={
+    titulo:"gabrielkennedyy",
+    data:"setembro 19, 2019",
+    descricao:"Estou criando um App",
+    like: 12,
+    comente:4,
+    hora_coment: "11h ago"
+  }
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
   public somadoisnumeros():void{
