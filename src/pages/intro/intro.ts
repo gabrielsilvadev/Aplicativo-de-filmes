@@ -7,7 +7,7 @@ import { TabsPage } from '../tabs/tabs';
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
- */
+ */ 
 
 @IonicPage()
 @Component({
@@ -18,11 +18,11 @@ export class IntroPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
+ 
   ionViewDidLoad() {
     console.log('ionViewDidLoad IntroPage');
   }
   goTo(){
-     this.navCtrl.push(TabsPage)
-   }
+    this.navCtrl.push(TabsPage)
+  }
 }
