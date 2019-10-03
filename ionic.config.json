@@ -1,5 +1,7 @@
 {
   "name": "idApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }
