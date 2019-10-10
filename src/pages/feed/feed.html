@@ -5,6 +5,9 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
+ <ion-refresher (ionRefresh)="doRefresh(refresher)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
  
   <ion-card *ngFor="let filme of lista_filmes" class="cor">
     <ion-item>

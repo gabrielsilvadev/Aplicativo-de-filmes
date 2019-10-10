@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { MovieProvider } from '../../providers/movie/movie';
 /**
  * Generated class for the FeedPage page.
@@ -26,23 +26,48 @@ export default class FeedPage {
     hora_coment: "11h ago"
   }
   public lista_filmes = new  Array<any>();
+  public loader;
 
   constructor(public navCtrl: NavController, 
-    public navParams: NavParams, private movieProvider: MovieProvider) {
+    public navParams: NavParams, private movieProvider: MovieProvider,public loadingCtrl: LoadingController) {
   }
   public somadoisnumeros():void{
     // alert()
   }
+  
+  presentLoading() {
+     this.loader = this.loadingCtrl.create({
+      content: "Please wait...",
+    });
+    this.loader.present();
+  }
 
-  ionViewDidLoad() {
+  fechar(){
+    this.loader.dismiss();
+  }
+
+    doRefresh(refresher) {
+      console.log('Begin async operation', refresher);
+  
+      setTimeout(() => {
+        console.log('Async operation has ended');
+        refresher.complete();
+      }, 2000);
+    
+  
+  
+  ionViewDidEnter(){
+    this.presentLoading();
     this.movieProvider.Movies().subscribe(
       data=>{
         const response = (data as any); 
         const objeto_retorne = JSON.parse(response._body);
         this.lista_filmes = objeto_retorne.results; 
         console.log(objeto_retorne);
+        this.fechar();
       }, error=>{
         console.log(error);
+        this.fechar();
       }
     )
   }

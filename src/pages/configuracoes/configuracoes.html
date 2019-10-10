@@ -6,7 +6,10 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>configuracoes</ion-title>
+  <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Config</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -19,17 +22,11 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <button ion-item (click)="openPage(homePage)">
-          Home
+        <button ion-item (click)="openPage(perfilPage)">
+          Perfil
         </button>
-        <button ion-item (click)="openPage(friendsPage)">
-          Friends
-        </button>
-        <button ion-item (click)="openPage(eventsPage)">
-          Events
-        </button>
-        <button ion-item (click)="closeMenu()">
-          Close Menu
+        <button ion-item (click)="openPage(sobrePage)">
+          Sobre
         </button>
       </ion-list>
     </ion-content>
