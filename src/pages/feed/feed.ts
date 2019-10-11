@@ -27,6 +27,10 @@ export default class FeedPage {
   }
   public lista_filmes = new  Array<any>();
   public loader;
+  public refresher;
+  public isRefreshing: boolean = false;
+  
+
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, private movieProvider: MovieProvider,public loadingCtrl: LoadingController) {
@@ -36,7 +40,7 @@ export default class FeedPage {
   }
   
   presentLoading() {
-     this.loader = this.loadingCtrl.create({
+    this.loader = this.loadingCtrl.create({
       content: "Please wait...",
     });
     this.loader.present();
@@ -45,18 +49,21 @@ export default class FeedPage {
   fechar(){
     this.loader.dismiss();
   }
+  
+  doRefresh(refresher) {
+    console.log('Begin async operation');
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      this.apimovie();
+      refresher.complete();
+    }, 2000);
+  }
 
-    doRefresh(refresher) {
-      console.log('Begin async operation', refresher);
-  
-      setTimeout(() => {
-        console.log('Async operation has ended');
-        refresher.complete();
-      }, 2000);
-    
-  
-  
-  ionViewDidEnter(){
+  ioniViewDidEnter(){
+    this.apimovie();
+  }
+
+  apimovie(){
     this.presentLoading();
     this.movieProvider.Movies().subscribe(
       data=>{
@@ -67,9 +74,10 @@ export default class FeedPage {
         this.fechar();
       }, error=>{
         console.log(error);
-        this.fechar();
       }
     )
   }
 
 }
+       
+    
