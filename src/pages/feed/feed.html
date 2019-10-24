@@ -4,46 +4,46 @@
     <ion-title class="feed">Feed</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
- 
- <ion-refresher (ionRefresh)="doRefresh($event)">
-  <ion-refresher-content></ion-refresher-content>
+<ion-content padding class="cor1">
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
+
   <ion-card *ngFor="let filme of lista_filmes" class="cor">
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/imagem/avatar.png">
-      </ion-avatar>
+    <ion-item class="cor">
       <h2 class="feed_title">{{filme.title}}</h2>
       <p class="title">{{filme.release_date}}</p>
-    </ion-item>
+    </ion-item> 
   
-    <img [src]="'https://image.tmdb.org/t/p/w500/' + filme.backdrop_path">
-  
-    <ion-card-content>
-      <p>{{filme.overview}}</p>
-    </ion-card-content>
-  
-    <ion-row>
-      <ion-col>
+    <img (click)="abrir(filme)" [src]="'https://image.tmdb.org/t/p/w500/' + filme.backdrop_path">
+
+    <ion-row >
+      <ion-col class="cor">
         <button ion-button icon-start clear small>
-          <ion-icon name="thumbs-up"></ion-icon>
-          <div>{{objeto_feed.like}}</div>
+          <ion-icon name="heart"> {{filme.vote_count}} </ion-icon>
         </button>
       </ion-col>
       <ion-col>
-        <button ion-button icon-start clear small>
+        <button ion-button icon-start clear small> 
           <ion-icon name="text"></ion-icon>
-          <div>{{objeto_feed.comente}}</div>
         </button>
       </ion-col>
-      <ion-col align-self-center text-center>
-        <ion-note>
-          {{objeto_feed.hora__comente}}
-        </ion-note>
+      <ion-col align-self-center text-center> 
+        <ion-note></ion-note>
       </ion-col>
-    </ion-row>
-  
+       <ion-col>
+        <button ion-button icon-start clear small> 
+          <ion-icon name="bookmark"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>  
   </ion-card>
 
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="$event.waitFor(doInfinite())">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

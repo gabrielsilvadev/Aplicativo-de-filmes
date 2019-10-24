@@ -6,10 +6,33 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>detalhes</ion-title>
+    <ion-title>{{filmesid.title}}</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content padding class="cor1">
+  <ion-card class="cor">
+    <ion-card-content>
+    <img [src]="'https://image.tmdb.org/t/p/w500/' + filmesid.poster_path">
+      <p class="color2">{{filmesid.overview}}</p> 
+    </ion-card-content>
+ <ion-row>
+      <ion-col>
+        <ion-fab>
+        <button ion-fab color="primary" class="cor"> {{filmesid.author}}</button>
+         
+        </ion-fab>
+        
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-start clear small class="cor">
+          <ion-icon name="text"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col align-self-center text-center> 
+        <ion-note></ion-note>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 </ion-content>
+ 

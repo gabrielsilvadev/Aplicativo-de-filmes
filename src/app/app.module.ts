@@ -17,6 +17,7 @@ import FeedPage from '../pages/feed/feed';
 import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
 import { SobrePage } from '../pages/sobre/sobre';
 import { PerfilPage } from '../pages/perfil/perfil';
+import { DetalhesPage } from '../pages/detalhes/detalhes';
 
 @NgModule({
   declarations: [
@@ -27,9 +28,10 @@ import { PerfilPage } from '../pages/perfil/perfil';
     IntroPage,
     ConfiguracoesPage,
     SobrePage,
-    PerfilPage
+    PerfilPage,
+    DetalhesPage
   ],
-  imports: [
+  imports: [ 
     BrowserModule,
     IonicModule.forRoot(MyApp), 
     HttpModule
@@ -42,7 +44,8 @@ import { PerfilPage } from '../pages/perfil/perfil';
     IntroPage,
     ConfiguracoesPage,
     SobrePage,
-    PerfilPage
+    PerfilPage,
+    DetalhesPage
   ],
   providers: [
     StatusBar,
